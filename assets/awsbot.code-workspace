@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"path": "../../../../vue/awsbot"
+		},
+		{
+			"path": "../.."
+		}
+	],
+	"settings": {
+		"DockerRun.DisableDockerrc": true
+	}
+}
