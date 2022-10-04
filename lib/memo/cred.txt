@@ -1,0 +1,29 @@
+[default]
+aws_access_key_id=AKIAUWSFAVNCSL67BM4Z
+aws_secret_access_key=S7Jsv4RzRsGTHGkgRZyyqH5jQfoqWfhTJa/1hcJ
+
+[amplify-client]
+aws_access_key_id=AKIAUWSFAVNC5H37ZHGE
+aws_secret_access_key=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
+
+[amplify-cli-user]
+aws_access_key_id=AKIAUWSFAVNCSLFK5NQH
+aws_secret_access_key=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
+
+[amplify-cli-post]
+aws_access_key_id=AKIAUWSFAVNCV7SX4KFG
+aws_secret_access_key=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
+
+==============================================================
+
+[default]
+region=eu-north-1
+
+[profile amplify-client]
+region=eu-north-1
+
+[profile amplify-cli-user]
+region=eu-north-1
+
+[profile amplify-cli-post]
+region=eu-west-1

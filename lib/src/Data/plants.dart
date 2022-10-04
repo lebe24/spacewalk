@@ -6,6 +6,10 @@ List<dynamic> Planets = [
   },
   {
     'Planet':'Venus',
+    'img' : 'assets/venus.png'
+  },
+  {
+    'Planet':'Mars',
     'img' : 'assets/earth.png'
   }
 ];

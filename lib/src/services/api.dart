@@ -13,20 +13,29 @@ class ApiServices {
   };
 
   // Planet Json
-  dynamic planet() async {
-    dynamic jsonResponse;
+dynamic planet() async {
 
-    try {
-      var response = await Requests.get(url, headers: header);
+    final response = await Requests.get(url, headers: header);
 
-      if (response.statusCode == 200) {
-        jsonResponse = jsonDecode(response.body);
-        print(jsonResponse.length);
-      }
-    } catch (e) {
-      print(e);
+    if (response.statusCode == 200) {
+      dynamic jsonResponse = jsonDecode(response.body);
+      print(jsonResponse[4]['name']);
+      return jsonResponse;
+    } else {
+      throw Exception('Failed to load');
     }
 
-    return jsonResponse;
+    // print(jsonResponse);
+
+    // try {
+    //   var response = await Requests.get(url, headers: header);
+
+    //   if (response.statusCode == 200) {
+    //     return jsonResponse = jsonDecode(response.body);
+    //     // print(jsonResponse.length);
+    //   }
+    // } catch (e) {
+    //   print(e);
+    // }
   }
 }
