@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:planet/src/constants/Colors.dart';
+import 'package:planet/src/services/ap.dart';
 import 'package:planet/src/widget/Rounded.dart';
 
 class DetailPage extends StatelessWidget {
@@ -9,6 +10,17 @@ class DetailPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final String arg = infoPlanet['Planet'];
+    var i;
+
+    void setPlant() async {
+      i = await Planetvideo('Planet `$arg`');
+
+      print(i.length);
+    }
+
+    setPlant();
+
     return SafeArea(
       child: Scaffold(
         body: Container(
@@ -32,7 +44,7 @@ class DetailPage extends StatelessWidget {
                         children: <Widget>[
                           const SizedBox(height: 200),
                           Text(
-                            infoPlanet['Planet'],
+                            '',
                             style: TextStyle(
                               fontFamily: 'Avenir',
                               fontSize: 26,

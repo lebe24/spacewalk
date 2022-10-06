@@ -37,6 +37,7 @@ dependencies:
   requests: ^4.7.0
   flutter_gallery_3d: ^1.0.4
   flutter_svg: ^1.1.5
+  expandable_bottom_bar: ^2.0.2
 
 dev_dependencies:
   flutter_test:
