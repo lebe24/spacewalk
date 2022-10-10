@@ -1,6 +1,6 @@
 # planet App
 
-A new Flutter project.
+<img src='assets/plantapp.png' />
 
 ## Getting Started
 
