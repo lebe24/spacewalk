@@ -1,6 +1,6 @@
 # planet App
 
-<img src='assets/plantapp.png' />
+<img src='assets/planetapp.png' />
 
 ## Getting Started
 
