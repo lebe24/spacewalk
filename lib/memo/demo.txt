@@ -133,3 +133,222 @@ class BackgrounBlurView extends StatelessWidget {
     ]);
   }
 }
+
+
+=========================
+
+
+      future: setPlant(),
+      builder: (BuildContext context,
+          AsyncSnapshot snapshot) {
+        print(i['contents'].length);
+        return snapshot.hasData ? ListView.builder(
+            scrollDirection:
+                Axis.horizontal,
+            itemCount: i['contents'].length,
+            itemBuilder: ((context, index) {
+              return InkWell(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    PageRouteBuilder(
+                        pageBuilder: (context,
+                                a, b) =>
+                            VideoScreen()),
+                  );
+                },
+                child: Stack(
+                  children: [
+                    Container(
+                      decoration:
+                          BoxDecoration(
+                        color: Colors.white,
+                        borderRadius:
+                            BorderRadius
+                                .circular(
+                                    20.0),
+                      ),
+                      padding:
+                          EdgeInsets.all(
+                              3.0),
+                      margin:
+                          const EdgeInsets
+                                  .only(
+                              left: 5.0,
+                              right: 5.0),
+                      child: ClipRRect(
+                          borderRadius:
+                              BorderRadius
+                                  .circular(
+                                      20.0),
+                          child:
+                              Image.network(
+                            'https://i.ytimg.com/vi/KY70s0W5zH0/hq720.jpg?sqp=-oaymwEcCOgCEMoBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLDR_oWA4tZTz-8pli_l540FI8Y3nQ',
+                            width: 82,
+                            height: 82,
+                            fit: BoxFit
+                                .cover,
+                          )),
+                    ),
+                    const Center(
+                      child:
+                          RoundedContainer(
+                        margin:
+                            EdgeInsets.all(
+                                34),
+                        padding:
+                            EdgeInsets.all(
+                                4.0),
+                        child: Icon(
+                          Icons
+                              .play_arrow_rounded,
+                          color: Colors.red,
+                          size: 16,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              );
+            })) : Text('data'); 
+      },
+    )),
+
+===================
+
+import 'package:flutter/material.dart';
+import 'package:flutter_ripple/flutter_ripple.dart';
+
+void main() {
+  runApp(App());
+}
+
+class App extends StatelessWidget {
+  const App({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: RippleExample(),
+    );
+  }
+}
+
+class RippleExample extends StatefulWidget {
+  const RippleExample({Key? key}) : super(key: key);
+
+  @override
+  _RippleExampleState createState() => _RippleExampleState();
+}
+
+class _RippleExampleState extends State<RippleExample> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Flutter Ripple'),
+      ),
+      body: Center(
+        child: Stack(
+          children: [
+            ///Show Ripple Widget
+            FlutterRipple(
+              radius: 20.0,
+              child: Icon(
+                Icons.play_arrow_rounded,
+                color: Colors.white,
+                size: 26,
+              ),
+              rippleColor: Colors.red,
+              onTap: () {
+                print("hello");
+              },
+            ),
+            Positioned(
+              top: MediaQuery.of(context).size.height / 2 + 100,
+              right: 50,
+              left: 50,
+              child: Container(
+                child: Column(
+                  children: [
+                    Text(
+                      "Searching for location.",
+                      textAlign: TextAlign.center,
+                    ),
+                    Container(
+                      margin: const EdgeInsets.only(top: 10),
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 30, vertical: 15),
+                      decoration: BoxDecoration(
+                          color: Colors.blue,
+                          borderRadius: BorderRadius.circular(50)),
+                      child: Text(
+                        "Find All Location",
+                        style: TextStyle(color: Colors.white),
+                      ),
+                    )
+                  ],
+                ),
+              ),
+            )
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+
+=======================
+
+class _RippleExampleState extends State<RippleExample> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Flutter Ripple'),
+      ),
+      body: Center(
+        child: Stack(
+          children: [
+            Container(
+              padding: EdgeInsets.all(3.0),
+              decoration: BoxDecoration(
+                color: Colors.black,
+                borderRadius: BorderRadius.circular(20.0),
+              ),
+              child: ClipRRect(
+                  borderRadius: BorderRadius.circular(20.0),
+                  child: Image.network(
+                    'https://i.ytimg.com/vi/KY70s0W5zH0/hq720.jpg?sqp=-oaymwEcCOgCEMoBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLDR_oWA4tZTz-8pli_l540FI8Y3nQ',
+                    width: 82,
+                    height: 82,
+                    fit: BoxFit.cover,
+                  )),
+            ),
+            Positioned(
+              top: 20,
+              left: 20,
+              child: SizedBox(
+                height: 42,
+                width: 42,
+                child: FlutterRipple(
+                  radius: 20.0,
+                  child: Icon(
+                    Icons.play_arrow_rounded,
+                    color: Colors.white,
+                    size: 26,
+                  ),
+                  rippleColor: Colors.red,
+                  onTap: () {
+                    print("hello");
+                  },
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}

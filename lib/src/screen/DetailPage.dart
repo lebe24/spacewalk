@@ -1,25 +1,25 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_ripple/flutter_ripple.dart';
 import 'package:planet/src/constants/Colors.dart';
+import 'package:planet/src/screen/yt.dart';
 import 'package:planet/src/services/ap.dart';
 import 'package:planet/src/widget/Rounded.dart';
 
 class DetailPage extends StatelessWidget {
   dynamic infoPlanet;
+  int num;
 
-  DetailPage({super.key, required this.infoPlanet});
+  DetailPage({super.key, required this.infoPlanet, required this.num});
 
   @override
   Widget build(BuildContext context) {
-    final String arg = infoPlanet['Planet'];
-    var i;
+    // final String arg = infoPlanet['Planet'];
+    // var i;
 
-    void setPlant() async {
-      i = await Planetvideo('Planet `$arg`');
-
-      print(i.length);
-    }
-
-    setPlant();
+    // dynamic setPlant() async {
+    //   return i = await Planetvideo('Planet `$arg`');
+    //   // print(i['contents'].length);
+    // }
 
     return SafeArea(
       child: Scaffold(
@@ -44,7 +44,7 @@ class DetailPage extends StatelessWidget {
                         children: <Widget>[
                           const SizedBox(height: 200),
                           Text(
-                            '',
+                            infoPlanet['Planet'],
                             style: TextStyle(
                               fontFamily: 'Avenir',
                               fontSize: 26,
@@ -66,41 +66,76 @@ class DetailPage extends StatelessWidget {
                         ],
                       ),
                     ),
-                    Container(
-                      width: MediaQuery.of(context).size.width,
-                      height: 180,
-                      child: RoundedContainer(
-                        shadowColor:
-                            Color.fromARGB(255, 200, 11, 11).withOpacity(0.4),
-                        blurRadius: 15.0,
-                        isShadow: true,
-                        radius: 24,
-                        padding: EdgeInsets.all(0),
-                        margin: EdgeInsets.symmetric(
-                          horizontal: 20,
-                        ),
-                        color: Colors.white,
-                        child: Stack(
-                          children: [
-                            Padding(
-                              padding: const EdgeInsets.all(20.0),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: const [
-                                  Padding(
-                                    padding: const EdgeInsets.only(top: 6.0),
-                                    child: Text(
-                                      "There is still time to start the examuis",
-                                      style: TextStyle(color: Colors.white),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 128.0),
+                      child: Container(
+                        width: MediaQuery.of(context).size.width,
+                        height: 180,
+                        child: RoundedContainer(
+                          shadowColor:
+                              Color.fromARGB(255, 200, 11, 11).withOpacity(0.4),
+                          blurRadius: 15.0,
+                          isShadow: true,
+                          radius: 24,
+                          padding: EdgeInsets.all(0),
+                          margin: EdgeInsets.symmetric(
+                            horizontal: 20,
+                          ),
+                          color: Color(0xDA0EEB75),
+                          child: Stack(
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.all(20.0),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    const Padding(
+                                      padding: EdgeInsets.only(top: 6.0),
+                                      child: Center(
+                                        child: Text(
+                                          "Video",
+                                          style: TextStyle(color: Colors.white),
+                                        ),
+                                      ),
                                     ),
-                                  ),
-                                  SizedBox(
-                                    height: 20,
-                                  ),
-                                ],
-                              ),
-                            )
-                          ],
+                                    const SizedBox(
+                                      height: 20,
+                                    ),
+                                    Container(
+                                        height: 90,
+                                        child: FutureBuilder<dynamic>(
+                                          future:
+                                              Planetvideo(infoPlanet['Planet']),
+                                          builder: (context, snapshot) {
+                                            return snapshot.hasData
+                                                ? ListView.builder(
+                                                    itemCount: snapshot
+                                                .data['contents'].length,
+                                                    scrollDirection:
+                                                        Axis.horizontal,
+                                                    itemBuilder:
+                                                        (context, index) {
+                                                          
+                                                      // print(snapshot
+                                                      //         .data['contents']
+                                                      //     [index]);
+                                                      return InkWell(
+                                                        onTap: () {},
+                                                        child: play(snapshot
+                                                            .data['contents']
+                                                                [index]['video']['thumbnails'][0]['url']
+                                                            .toString()),
+                                                      );
+                                                    },
+                                                  )
+                                                : CircularProgressIndicator();
+                                          },
+                                        ))
+                                  ],
+                                ),
+                              )
+                            ],
+                          ),
                         ),
                       ),
                     )
@@ -108,17 +143,20 @@ class DetailPage extends StatelessWidget {
                 ),
               ),
               Positioned(
-                top: 20,
+                top: 10,
                 right: 34,
                 child: Hero(
                     tag: infoPlanet['Planet'],
-                    child: Image.asset(infoPlanet['img'])),
+                    child: Image.asset(
+                      infoPlanet['img'],
+                      height: 250,
+                    )),
               ),
               Positioned(
                 top: 60,
-                left: 32,
+                left: 22,
                 child: Text(
-                  3.toString(),
+                  num.toString(),
                   style: TextStyle(
                     fontFamily: 'Avenir',
                     fontSize: 247,
@@ -140,4 +178,44 @@ class DetailPage extends StatelessWidget {
       ),
     );
   }
+}
+
+Widget play(String x) {
+  return Stack(
+    children: [
+      Container(
+        margin: const EdgeInsets.only(left: 5.0, right: 5.0),
+        padding: EdgeInsets.all(3.0),
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(20.0),
+        ),
+        child: ClipRRect(
+            borderRadius: BorderRadius.circular(20.0),
+            child: Image.network(
+              x,
+              width: 82,
+              height: 82,
+              fit: BoxFit.cover,
+            )),
+      ),
+      Positioned(
+        top: 20,
+        left: 25,
+        child: SizedBox(
+          height: 42,
+          width: 42,
+          child: FlutterRipple(
+            rippleColor: Colors.red,
+            radius: 20.0,
+            child: Icon(
+              Icons.play_arrow_rounded,
+              color: white,
+              size: 16,
+            ),
+          ),
+        ),
+      )
+    ],
+  );
 }

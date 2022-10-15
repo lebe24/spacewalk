@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gallery_3d/gallery3d.dart';
 import 'package:planet/src/screen/DetailPage.dart';
-import 'package:planet/src/screen/Explore.dart';
+import 'package:planet/memo/Explore.dart';
 
 class Card3d extends StatefulWidget {
   Card3d({
@@ -54,11 +54,13 @@ class _Card3dState extends State<Card3d> {
               PageRouteBuilder(
                   pageBuilder: (context, a, b) => DetailPage(
                         infoPlanet: widget.planets[index],
+                        num: index+ 1
              )),
             );
           },
           child: PlanetCard(widget.planets[index]['Planet'],
-              index+1, widget.planets[index]['img']),
+              index+1,
+              widget.planets[index]['img']),
         );
       }),
     );
@@ -142,5 +144,3 @@ Widget PlanetCard(String name, int pos, String iconImage) {
 }
 
 
-// child:  PlanetCard(
-//             widget.planets[index]['Planet'], widget.desc, widget.number, widget.planets[index]['img']),
