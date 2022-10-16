@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
 class VideoScreen extends StatefulWidget {
+  String id;
+
+  VideoScreen({required this.id});
   @override
   _VideoScreenState createState() => _VideoScreenState();
 }
@@ -13,7 +16,7 @@ class _VideoScreenState extends State<VideoScreen> {
   void initState() {
     super.initState();
     _controller = YoutubePlayerController(
-      initialVideoId: 'yAzRJTI1EJo',
+      initialVideoId: widget.id,
       flags: YoutubePlayerFlags(
         mute: false,
         autoPlay: true,
@@ -33,24 +36,17 @@ class _VideoScreenState extends State<VideoScreen> {
           elevation: 0.0,
           backgroundColor: Color.fromARGB(0, 226, 225, 225).withOpacity(1),
         ),
-        body: Stack(children: <Widget>[
-          Container(
-            padding: const EdgeInsets.only(bottom: 8.0),
-            color: Color.fromARGB(255, 207, 22, 22),
-            height: double.infinity,
-            child: Padding(
-              padding: const EdgeInsets.only(bottom: 56.0),
-              child: YoutubePlayer(
-                controller: _controller,
-                showVideoProgressIndicator: true,
-                aspectRatio: 4 / 3,
-                progressIndicatorColor: Color.fromARGB(255, 9, 215, 33),
-                onReady: () {
-                  print('Player is ready.');
-                },
-              ),
-            ),
+        body: Padding(
+          padding: const EdgeInsets.only(bottom: 56.0),
+          child: YoutubePlayer(
+            controller: _controller,
+            showVideoProgressIndicator: true,
+            aspectRatio: 4 / 3,
+            progressIndicatorColor: Color.fromARGB(255, 9, 215, 33),
+            onReady: () {
+              print('Player is ready.');
+            },
           ),
-        ]));
+        ));
   }
 }

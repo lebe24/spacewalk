@@ -34,7 +34,7 @@ dev_dependencies:
 
 flutter_native_splash:
   color: "#beb3a4"
-  image: assets/Spl.png
+  image: assets/Frame.png
   fill: true
   android: true
   ios: true

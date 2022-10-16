@@ -13,13 +13,6 @@ class DetailPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // final String arg = infoPlanet['Planet'];
-    // var i;
-
-    // dynamic setPlant() async {
-    //   return i = await Planetvideo('Planet `$arg`');
-    //   // print(i['contents'].length);
-    // }
 
     return SafeArea(
       child: Scaffold(
@@ -110,20 +103,31 @@ class DetailPage extends StatelessWidget {
                                             return snapshot.hasData
                                                 ? ListView.builder(
                                                     itemCount: snapshot
-                                                .data['contents'].length,
+                                                        .data['contents']
+                                                        .length,
                                                     scrollDirection:
                                                         Axis.horizontal,
                                                     itemBuilder:
                                                         (context, index) {
-                                                          
                                                       // print(snapshot
                                                       //         .data['contents']
                                                       //     [index]);
                                                       return InkWell(
-                                                        onTap: () {},
+                                                        onTap: () {
+                                                          Navigator.push(
+                                                              context,
+                                                              MaterialPageRoute(
+                                                                builder: (context) =>
+                                                                    VideoScreen(
+                                                                        id: snapshot
+                                                                            .data['contents'][index]['video']['videoId']),
+                                                              ));
+                                                        },
                                                         child: play(snapshot
                                                             .data['contents']
-                                                                [index]['video']['thumbnails'][0]['url']
+                                                                [index]['video']
+                                                                ['thumbnails']
+                                                                [0]['url']
                                                             .toString()),
                                                       );
                                                     },
