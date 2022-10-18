@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'package:requests/requests.dart';
 
-plant() async {
+plantInfo() async {
   dynamic jsonResponse;
   const String url =
       'https://planets-info-by-newbapi.p.rapidapi.com/api/v1/planet/list';
@@ -22,13 +22,6 @@ plant() async {
   return jsonResponse;
 }
 
-get() {
-  int a = 1;
-  int b = 3;
-
-  print(a + b);
-  return a + b;
-}
 
 Planetvideo(String planet) async {
   dynamic jsonResponse;

@@ -3,6 +3,8 @@ import 'package:flutter_gallery_3d/gallery3d.dart';
 import 'package:planet/src/screen/DetailPage.dart';
 import 'package:planet/memo/Explore.dart';
 
+import '../services/ap.dart';
+
 class Card3d extends StatefulWidget {
   Card3d({
     super.key,
@@ -50,16 +52,18 @@ class _Card3dState extends State<Card3d> {
         return InkWell(
           onTap: () {
             Navigator.push(
-              context,
-              PageRouteBuilder(
-                  pageBuilder: (context, a, b) => DetailPage(
-                        infoPlanet: widget.planets[index],
-                        num: index+ 1
-             )),
-            );
+                context,
+                PageRouteBuilder(
+                    pageBuilder: (context, a, b) => FutureBuilder<dynamic>(
+                        future: plantInfo(),
+                        builder: (context, snapshot) => snapshot.hasData ? DetailPage(
+                            desc:  snapshot.data[widget.planets[index]['num']],
+                            infoPlanet: widget.planets[index],
+                            num: index + 1) : Center(child: CircularProgressIndicator(
+                              value: 50,
+                            )))));
           },
-          child: PlanetCard(widget.planets[index]['Planet'],
-              index+1,
+          child: PlanetCard(widget.planets[index]['Planet'], index + 1,
               widget.planets[index]['img']),
         );
       }),
@@ -142,5 +146,3 @@ Widget PlanetCard(String name, int pos, String iconImage) {
     ],
   );
 }
-
-

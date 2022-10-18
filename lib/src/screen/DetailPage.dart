@@ -6,14 +6,14 @@ import 'package:planet/src/services/ap.dart';
 import 'package:planet/src/widget/Rounded.dart';
 
 class DetailPage extends StatelessWidget {
-  dynamic infoPlanet;
+  dynamic infoPlanet,desc ;
   int num;
+  
 
-  DetailPage({super.key, required this.infoPlanet, required this.num});
+  DetailPage({super.key,required this.desc, required this.infoPlanet, required this.num});
 
   @override
   Widget build(BuildContext context) {
-
     return SafeArea(
       child: Scaffold(
         body: Container(
@@ -47,7 +47,7 @@ class DetailPage extends StatelessWidget {
                             textAlign: TextAlign.left,
                           ),
                           Text(
-                            'Solar System',
+                            desc['description'] == null ? 'no data' : desc['description'],
                             style: TextStyle(
                               fontFamily: 'Avenir',
                               fontSize: 31,
@@ -119,8 +119,9 @@ class DetailPage extends StatelessWidget {
                                                               MaterialPageRoute(
                                                                 builder: (context) =>
                                                                     VideoScreen(
-                                                                        id: snapshot
-                                                                            .data['contents'][index]['video']['videoId']),
+                                                                        id: snapshot.data['contents'][index]['video']
+                                                                            [
+                                                                            'videoId']),
                                                               ));
                                                         },
                                                         child: play(snapshot
@@ -132,7 +133,12 @@ class DetailPage extends StatelessWidget {
                                                       );
                                                     },
                                                   )
-                                                : CircularProgressIndicator();
+                                                : Center(
+                                                    child:
+                                                        CircularProgressIndicator(
+                                                    value: 20,
+                                                    color: Colors.redAccent,
+                                                  ));
                                           },
                                         ))
                                   ],
