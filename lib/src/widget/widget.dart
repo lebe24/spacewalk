@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gallery_3d/gallery3d.dart';
 import 'package:planet/src/screen/DetailPage.dart';
-import 'package:planet/memo/Explore.dart';
+import 'package:planet/src/widget/Rivewall.dart';
 
 import '../services/ap.dart';
 
@@ -56,12 +56,13 @@ class _Card3dState extends State<Card3d> {
                 PageRouteBuilder(
                     pageBuilder: (context, a, b) => FutureBuilder<dynamic>(
                         future: plantInfo(),
-                        builder: (context, snapshot) => snapshot.hasData ? DetailPage(
-                            desc:  snapshot.data[widget.planets[index]['num']],
-                            infoPlanet: widget.planets[index],
-                            num: index + 1) : Center(child: CircularProgressIndicator(
-                              value: 50,
-                            )))));
+                        builder: (context, snapshot) => snapshot.hasData
+                            ? DetailPage(
+                                desc:
+                                    snapshot.data[widget.planets[index]['num']],
+                                infoPlanet: widget.planets[index],
+                                num: index + 1)
+                            : Rivewall())));
           },
           child: PlanetCard(widget.planets[index]['Planet'], index + 1,
               widget.planets[index]['img']),
@@ -102,7 +103,7 @@ Widget PlanetCard(String name, int pos, String iconImage) {
                       textAlign: TextAlign.left,
                     ),
                     Text(
-                      'Space',
+                      'Planet',
                       style: const TextStyle(
                         fontFamily: 'Avenir',
                         fontSize: 20,

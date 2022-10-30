@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-Color primaryTextColor = Color(0xFF414C6B);
+Color primaryTextColor = Color.fromARGB(255, 21, 71, 210);
 Color secondaryTextColor = Color(0xFFE4979E);
 Color titleTextColor = Colors.white;
 Color contentTextColor = Color(0xff868686);

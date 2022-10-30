@@ -30,11 +30,11 @@ class _VideoScreenState extends State<VideoScreen> {
     return Scaffold(
         appBar: AppBar(
           iconTheme: IconThemeData(
-            color: Color.fromARGB(255, 10, 10, 10), //change your color here
+            color: Color.fromARGB(255, 244, 243, 243), //change your color here
           ),
           centerTitle: true,
           elevation: 0.0,
-          backgroundColor: Color.fromARGB(0, 226, 225, 225).withOpacity(1),
+          backgroundColor: Color(0xE0000000).withOpacity(1),
         ),
         body: Padding(
           padding: const EdgeInsets.only(bottom: 56.0),

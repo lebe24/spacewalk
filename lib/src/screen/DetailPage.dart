@@ -3,29 +3,27 @@ import 'package:flutter_ripple/flutter_ripple.dart';
 import 'package:planet/src/constants/Colors.dart';
 import 'package:planet/src/screen/yt.dart';
 import 'package:planet/src/services/ap.dart';
+import 'package:planet/src/widget/Rivewall.dart';
 import 'package:planet/src/widget/Rounded.dart';
 
 class DetailPage extends StatelessWidget {
-  dynamic infoPlanet,desc ;
+  dynamic infoPlanet, desc;
   int num;
-  
 
-  DetailPage({super.key,required this.desc, required this.infoPlanet, required this.num});
+  DetailPage(
+      {super.key,
+      required this.desc,
+      required this.infoPlanet,
+      required this.num});
 
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
         body: Container(
-          height: MediaQuery.of(context).size.height,
-          width: MediaQuery.of(context).size.width,
-          decoration: const BoxDecoration(
-              color: Colors.blue,
-              image: DecorationImage(
-                  fit: BoxFit.cover,
-                  image: AssetImage('assets/Detail-bg.png'))),
           child: Stack(
             children: <Widget>[
+              Rivewall(),
               SingleChildScrollView(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -47,10 +45,12 @@ class DetailPage extends StatelessWidget {
                             textAlign: TextAlign.left,
                           ),
                           Text(
-                            desc['description'] == null ? 'no data' : desc['description'],
+                            desc['description'] == null
+                                ? 'no data'
+                                : desc['description'],
                             style: TextStyle(
                               fontFamily: 'Avenir',
-                              fontSize: 31,
+                              fontSize: 21,
                               color: primaryTextColor,
                               fontWeight: FontWeight.w300,
                             ),
@@ -74,7 +74,7 @@ class DetailPage extends StatelessWidget {
                           margin: EdgeInsets.symmetric(
                             horizontal: 20,
                           ),
-                          color: Color(0xDA0EEB75),
+                          color: Color.fromARGB(218, 5, 5, 68),
                           child: Stack(
                             children: [
                               Padding(
