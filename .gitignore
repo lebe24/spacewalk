@@ -16,6 +16,7 @@ migrate_working_dir/
 *.iws
 .idea/
 /lib/memo
+/lib/temp
 
 
 # The .vscode folder contains launch configuration and tasks you configure in

@@ -1,4 +1,6 @@
-# planet App
+<P align="center">
+<img src='assets/spacewalklogo.png' />
+</p>
 
 <img src='assets/planetapp.png' />
 
