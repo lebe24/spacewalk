@@ -1,5 +1,5 @@
 <P align="center">
-<img src='assets/spacewalklogo.png' />
+<img src='./assets/Spacewalklogo.png' />
 </p>
 
 <img src='assets/planetapp.png' />
