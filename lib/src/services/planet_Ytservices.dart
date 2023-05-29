@@ -6,7 +6,7 @@ import 'dart:convert';
 class Planetvideo {
 
   Map<String, String> header = {
-    'X-RapidAPI-Key': '23724cec06msh87881299a984296p1d1ef2jsn577eca766cea',
+    'X-RapidAPI-Key': 'api key',
     'X-RapidAPI-Host': 'youtube138.p.rapidapi.com',
   };
 
