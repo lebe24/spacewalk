@@ -23,7 +23,7 @@ class Card3d extends StatelessWidget {
       ),
       itemBuilder: ((context, index) => PlanetCard(
             name: Planets[index]['Planet'],
-            position: Planets[index]['num'],
+            position: Planets[index]['num'].toString(),
             planetimg: Planets[index]['img'],
             desc: Planets[index]['des'],
           )),
@@ -39,8 +39,7 @@ class PlanetCard extends StatelessWidget {
       required this.position,
       required this.name});
 
-  late String planetimg, name, desc;
-  late int position;
+  late String planetimg, name, desc, position;
 
   @override
   Widget build(BuildContext context) {
@@ -78,6 +77,7 @@ class PlanetCard extends StatelessWidget {
                       ),
                       Text(
                         desc,
+                        maxLines: 3,
                         style: const TextStyle(
                           fontFamily: 'Avenir',
                           fontSize: 10,
@@ -101,6 +101,9 @@ class PlanetCard extends StatelessWidget {
               Navigator.push(context, MaterialPageRoute(
                 builder: (_) => PlanetInfo(
                   tag: planetimg,
+                  name: name,
+                  position: position,
+                  desc: desc
                 )
               ));
             },
