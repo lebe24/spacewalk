@@ -1,14 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:planet/src/services/planet_Ytservices.dart';
-import 'package:planet/src/widget/contentBar.dart';
 import 'package:planet/src/widget/planet_content_card.dart';
 import 'package:planet/src/widget/planet_card.dart';
 import 'package:rive/rive.dart';
 
 class PlanetInfo extends StatefulWidget {
-  const PlanetInfo({super.key, required this.tag});
+  PlanetInfo(
+      {super.key,
+      required this.tag,
+      required this.name,
+      required this.desc,
+      required this.position});
 
-  final tag;
+  String tag, name, desc;
+  String position;
 
   @override
   State<PlanetInfo> createState() => _PlanetInfoState();
@@ -25,7 +30,7 @@ class _PlanetInfoState extends State<PlanetInfo> {
   }
 
   getData() async {
-    Post = await Planetvideo().getvideo("Earth");
+    Post = await Planetvideo().getvideo(widget.name);
     // print(Post['contents'][0]['video']['thumbnails'][0]['url']);
     if (Post != null) {
       setState((() => isLoading = true));
@@ -44,6 +49,8 @@ class _PlanetInfoState extends State<PlanetInfo> {
           ),
           PlanetDetail(
             tag: widget.tag,
+            desc: widget.desc,
+            position: widget.position,
           ),
           // ExhibitionBottomSheet()
           ContentCard(content: Post, load: isLoading),
@@ -52,3 +59,10 @@ class _PlanetInfoState extends State<PlanetInfo> {
     );
   }
 }
+
+// ClipRRect(
+//                       borderRadius: BorderRadius.circular(10),
+//                       child: Image.asset(
+//                         widget.listing.coverUrl,
+//                         fit: BoxFit.cover,
+//                       ),

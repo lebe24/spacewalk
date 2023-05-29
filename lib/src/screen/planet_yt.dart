@@ -3,8 +3,9 @@ import 'package:rive/rive.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
 class PlanetYt extends StatefulWidget {
-  const PlanetYt({super.key});
+  const PlanetYt({super.key, required this.id});
 
+  final String id;
   @override
   State<PlanetYt> createState() => _PlanetYtState();
 }
@@ -16,7 +17,8 @@ class _PlanetYtState extends State<PlanetYt> {
   void initState() {
     super.initState();
     _controller = YoutubePlayerController(
-      initialVideoId: 'gQDByCdjUXw',
+      // initialVideoId: 'gQDByCdjUXw',
+      initialVideoId: widget.id,
       flags: YoutubePlayerFlags(
         mute: false,
         autoPlay: true,

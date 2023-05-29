@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
 class PlanetDetail extends StatelessWidget {
-  const PlanetDetail({super.key, required this.tag});
+  PlanetDetail({super.key, required this.tag , required this.position, required this.desc});
 
-  final tag;
+  String tag,position,desc;
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +26,7 @@ class PlanetDetail extends StatelessWidget {
             top: 100,
             left: 0,
             child: Text(
-              '3',
+              position.toString(),
               style: TextStyle(
                   color: Colors.white.withOpacity(0.2),
                   fontSize: 400,
@@ -34,7 +34,7 @@ class PlanetDetail extends StatelessWidget {
             )),
         Center(
             child: Text(
-          'Our home planet is the third planet from the Sun, and the only place we know things.',
+          desc,
           textAlign: TextAlign.center,
           style: TextStyle(color: Colors.white, fontSize: 20),
         ))

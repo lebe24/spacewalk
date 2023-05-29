@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'dart:math';
 import 'dart:ui';
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:planet/src/screen/planet_yt.dart';
 
 const double minHeight = 150;
 const double iconStartSize = 44;
@@ -127,7 +128,7 @@ class _ContentCardState extends State<ContentCard>
                                     .map((e) => _builditem(e))
                               ],
                             )
-                          : CircularProgressIndicator()
+                          : Center(child: CircularProgressIndicator())
                     ],
                   ),
                 )));
@@ -147,7 +148,7 @@ class _ContentCardState extends State<ContentCard>
       decoration: BoxDecoration(
           color: Colors.white.withOpacity(0.46),
           borderRadius: BorderRadius.circular(32)),
-      padding: EdgeInsets.all(12),
+      padding: EdgeInsets.all(7),
       margin: EdgeInsets.all(13),
       // child: Image.network(
       //   'https://i.ytimg.com/vi/B1zYYFJC87A/hq720_2.jpg?sqp=-oaymwE2COgCEMoBSFXyq4qpAygIARUAAIhCGABwAcABBvABAfgBtgiAAoAPigIMCAAQARhyIF4oRTAP&rs=AOn4CLDvzbQKup-8zWicAySOgy4CGduv1w',
@@ -156,14 +157,23 @@ class _ContentCardState extends State<ContentCard>
       //     return Text('Failed to load image');
       //   },
       // ),
-      child: CachedNetworkImage(
-        fit: BoxFit.cover,
-        width: 500,
-        height: 600,
-        imageUrl: e['video']['thumbnails'][0]['url'].toString(),
-        progressIndicatorBuilder: (context, url, downloadProgress) =>
-            CircularProgressIndicator(value: downloadProgress.progress),
-        errorWidget: (context, url, error) => Icon(Icons.book),
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(20),
+        child: GestureDetector(
+          onTap: () => Navigator.push(context, MaterialPageRoute(
+            builder: (context) => PlanetYt(
+              id: e['video']['videoId']
+            )
+          )),
+          child: CachedNetworkImage(
+            fit: BoxFit.cover,
+            
+            imageUrl: e['video']['thumbnails'][0]['url'].toString(),
+            progressIndicatorBuilder: (context, url, downloadProgress) => Center(
+                child: CircularProgressIndicator(value: downloadProgress.progress)),
+            errorWidget: (context, url, error) => Icon(Icons.error),
+          ),
+        ),
       ),
     );
   }
