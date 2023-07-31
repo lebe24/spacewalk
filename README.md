@@ -4,6 +4,8 @@
 
 <img src='assets/planetapp.png' />
 
+https://github.com/lebe24/spacewalk/assets/31292486/4d0c03e7-b607-49d1-9e51-b2dc06a8e239
+
 ## Getting Started
 
 This project is a starting point for a Flutter application.
