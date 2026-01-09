@@ -6,7 +6,7 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 version: 1.0.0+1
 
 environment:
-  sdk: '>=2.18.0 <3.0.0'
+  sdk: '>=3.0.0 <4.0.0'
 
 
 dependencies:
@@ -20,13 +20,16 @@ dependencies:
   youtube_player_flutter: ^8.1.0
   flutter_ripple: ^0.0.3
   rive: ^0.9.1
-  cached_network_image: ^3.2.3
+  cached_network_image: ^3.3.1
 
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_launcher_icons: "^0.10.0"
+
+dependency_overrides:
+  win32: ^5.0.0
 
 
 flutter_icons:
@@ -77,7 +80,7 @@ flutter:
   assets:
     - assets/
     - assets/rive/
-    - assets/image/
+    
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
