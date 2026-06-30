@@ -2,22 +2,21 @@ import 'package:flutter/material.dart';
 import 'package:rive/rive.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
-class PlanetYt extends StatefulWidget {
-  const PlanetYt({super.key, required this.id});
+class PlanetVideoScreen extends StatefulWidget {
+  const PlanetVideoScreen({super.key, required this.id});
 
   final String id;
   @override
-  State<PlanetYt> createState() => _PlanetYtState();
+  State<PlanetVideoScreen> createState() => _PlanetVideoScreenState();
 }
 
-class _PlanetYtState extends State<PlanetYt> {
+class _PlanetVideoScreenState extends State<PlanetVideoScreen> {
   late YoutubePlayerController _controller;
 
   @override
   void initState() {
     super.initState();
     _controller = YoutubePlayerController(
-      // initialVideoId: 'gQDByCdjUXw',
       initialVideoId: widget.id,
       flags: YoutubePlayerFlags(
         mute: false,

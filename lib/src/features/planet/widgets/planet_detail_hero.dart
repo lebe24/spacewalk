@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
-class PlanetDetail extends StatelessWidget {
-  PlanetDetail({super.key, required this.tag , required this.position, required this.desc});
+class PlanetDetailHero extends StatelessWidget {
+  const PlanetDetailHero(
+      {super.key, required this.tag, required this.position, required this.desc});
 
-  String tag,position,desc;
+  final String tag;
+  final String position;
+  final String desc;
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +28,7 @@ class PlanetDetail extends StatelessWidget {
             top: 100,
             left: 0,
             child: Text(
-              position.toString(),
+              position,
               style: TextStyle(
                   color: Colors.white.withOpacity(0.2),
                   fontSize: 400,

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:planet/src/widget/card.dart';
+import 'package:planet/src/features/planet/widgets/planet_gallery_card.dart';
 import 'package:rive/rive.dart';
 
-class Planet extends StatelessWidget {
-  const Planet({super.key});
+class PlanetHomeScreen extends StatelessWidget {
+  const PlanetHomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +17,7 @@ class Planet extends StatelessWidget {
             style: TextStyle(
                 fontWeight: FontWeight.bold, fontSize: 40, color: Colors.white),
           )),
-          Card3d(),
+          PlanetGalleryCard(),
           SizedBox(
             width: 200,
             height: 200,

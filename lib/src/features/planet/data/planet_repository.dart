@@ -1,4 +1,4 @@
-List<dynamic> Planets = [
+const List<Map<String, dynamic>> planets = [
   {
     'Planet': 'Mercury',
     'num': 1,
